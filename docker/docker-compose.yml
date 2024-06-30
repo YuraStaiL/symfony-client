@@ -1,0 +1,18 @@
+services:
+  php-cli-client:
+    build:
+      context: ./php-cli
+    container_name: php-cli-client
+    working_dir: /var/www
+    environment:
+      PHP_IDE_CONFIG: "serverName=Docker"
+    volumes:
+      - ./../:/var/www/
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    name: symfony-network
+    external: true
+
